@@ -6,7 +6,7 @@ import Main from "./Page2/Main";
 const Page2 = () => {
   return (
     <div>
-      <Header />
+      <Header/>
       <Main />
       <Box />
     </div>

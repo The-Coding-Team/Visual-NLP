@@ -1,13 +1,10 @@
 import React from "react";
 import { Nav, Navbar } from "react-bootstrap";
-import { Container } from "react-bootstrap/lib/Tab";
+import { Container } from "react-bootstrap";
 
 const Header = () => {
   return (
-    <div
-      className="d-flex justify-content-between p-4"
-      style={{ borderBottom: "1px solid black" }}
-    >
+    <div>
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
