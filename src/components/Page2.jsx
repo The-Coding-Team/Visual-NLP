@@ -11,6 +11,15 @@ const Page2 = () => {
       <div className="d-flex justify-content-center">
         <Box />
       </div>
+      <div className="d-flex justify-content-center mb-5" width="100%">
+          <div style={{display:"flex",fontFamily:" 'Exo 2', sans-serif",alignItems:"center",justifyContent:"center"}}>DOWNLOAD IN
+          </div>
+      <div className="d-flex justify-content-around">
+          <button type="button" className="btn-lg btn-primary mx-3"><i class="far fa-file-word" style={{fontSize:"40px"}}></i></button>
+          <button type="button" className="btn-lg btn-danger mx-3"><i class="far fa-file-pdf" style={{fontSize:"40px"}}></i></button>
+          <button type="button" className="btn-lg btn-success mx-3"><i class="far fa-file-excel" style={{fontSize:"40px"}}></i></button>
+      </div>
+      </div>
     </div>
   );
 };
