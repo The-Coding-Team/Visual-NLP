@@ -78,3 +78,11 @@
   border: 2px solid rgb(204, 201, 201);
   width: 20rem;
 }
+.paragraph-card {
+  background-color: #edf6f9 !important;
+}
+.card-title {
+  background-color: blue;
+  border-radius: 10px;
+  /* padding-left: 10px; */
+}
