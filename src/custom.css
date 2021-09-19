@@ -69,20 +69,20 @@
 .image-display--container {
   width: 60%;
   align-items: center;
-  height: 40rem;
+  height: 50rem;
   margin: 2%;
 }
 .text-main--container {
   overflow-y: scroll;
-  height: 40rem;
+  height: 50rem;
   border: 2px solid rgb(204, 201, 201);
-  width: 20rem;
+  width: 25rem;
 }
 .paragraph-card {
   background-color: #edf6f9 !important;
 }
-.card-title {
-  background-color: blue;
-  border-radius: 10px;
-  /* padding-left: 10px; */
+.text-title {
+  border-radius: 20px;
+  color: white;
+  padding: 4px 10px;
 }
