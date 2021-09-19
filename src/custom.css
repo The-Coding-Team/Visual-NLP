@@ -20,3 +20,15 @@
   border-radius: 5px;
   padding: 10px 20px;
 }
+.image-display--container {
+  width: 60%;
+  align-items: center;
+  height: 40rem;
+  margin: 2%;
+}
+.text-main--container {
+  overflow-y: scroll;
+  height: 40rem;
+  border: 2px solid rgb(204, 201, 201);
+  width: 20rem;
+}
