@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { useHistory } from "react-router";
 import { getTextAPI } from "../api/getText";
 import Header from "./Page2/Header";
 import Main from "./Page2/Main";
+// const firebase = require("firebase");
+import firebase from "firebase/app";
 
 export const Page1 = ({ setFile }) => {
   const history = useHistory();
@@ -34,6 +37,17 @@ export const Page1 = ({ setFile }) => {
     setFile(url);
     hitAPI(url);
   };
+
+  const handleImage = (image) => {
+    const storage = firebase.default.storage();
+    const ref = storage.ref();
+    const imageRef = ref.child("Images/image1.pdf");
+    var metadata = {
+      contentType: "application/pdf",
+    };
+    imageRef.put(image, metadata);
+  };
+
   return (
     <>
       <Header />
@@ -61,7 +75,9 @@ export const Page1 = ({ setFile }) => {
               style={{ display: "none" }}
             />
           </div>
-          <div className="bottom-text">or drop Files here</div>
+          <div className="bottom-text" onClick={handleImage()}>
+            or drop Files here
+          </div>
         </div>
         <div style={{ display: loadingDisplay }} className="loading--container">
           <div>
