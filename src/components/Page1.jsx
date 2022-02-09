@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { useHistory } from "react-router";
 import { getTextAPI } from "../api/getText";
@@ -30,14 +29,11 @@ export const Page1 = ({ setFile }) => {
     setFileDisplay("none");
     setLoadingDisplay("flex");
     let file = e.target.files[0];
-    let reader = new FileReader();
     let url =
       "https://cdn.cnn.com/cnnnext/dam/assets/160122124623-01-national-handwriting-day.jpg";
-
     setFile(url);
     hitAPI(url);
   };
-
   const handleImage = (image) => {
     const storage = firebase.default.storage();
     const ref = storage.ref();
@@ -47,7 +43,6 @@ export const Page1 = ({ setFile }) => {
     };
     imageRef.put(image, metadata);
   };
-
   return (
     <>
       <Header />
