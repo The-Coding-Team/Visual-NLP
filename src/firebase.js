@@ -1,7 +1,5 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-
-const firebase = require("firebase");
+import firebase from "firebase/app";
+import "firebase/storage";
 const firebaseConfig = {
   apiKey: "AIzaSyB9C3evyfVuh-0OsBOxb4VP8i6DuAfEtX4",
   authDomain: "visual-nlp-98135.firebaseapp.com",
@@ -13,7 +11,6 @@ const firebaseConfig = {
 };
 
 // const app = initializeApp(firebaseConfig);
-firebase.default.initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = firebase.default.firestore();
-module.exports = db;
+firebase.initializeApp(firebaseConfig);
+const storage = firebase.storage();
+export { storage, firebase as default };

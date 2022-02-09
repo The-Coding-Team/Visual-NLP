@@ -4,11 +4,13 @@ import { useHistory } from "react-router";
 import { getTextAPI } from "../api/getText";
 import Header from "./Page2/Header";
 import Main from "./Page2/Main";
+import { storage } from "./../firebase";
 // const firebase = require("firebase");
-import firebase from "firebase/app";
 
 export const Page1 = ({ setFile }) => {
   const history = useHistory();
+  const [imageAsFile, setImageAsFile] = useState("");
+  const [imageAsUrl, setImageAsUrl] = useState();
   const [loadingText, setLoadingText] = useState("Uploading File");
   const [fileDisplay, setFileDisplay] = useState("flex");
   const [loadingDisplay, setLoadingDisplay] = useState("none");
@@ -17,32 +19,59 @@ export const Page1 = ({ setFile }) => {
     if (url.length) {
       const payload = { url };
       const res = await getTextAPI(payload);
+      console.log(res);
       if (res?.status) {
         history.push("/page-2", { text: res.text });
-        console.log(res.text);
       } else {
         //error handling
       }
     }
   };
   const handleFileChange = async (e) => {
-    setFileDisplay("none");
-    setLoadingDisplay("flex");
     let file = e.target.files[0];
     let url =
       "https://cdn.cnn.com/cnnnext/dam/assets/160122124623-01-national-handwriting-day.jpg";
     setFile(url);
     hitAPI(url);
   };
-  const handleImage = (image) => {
-    const storage = firebase.default.storage();
+  const handleImage = async (image) => {
     const ref = storage.ref();
-    const imageRef = ref.child("Images/image1.pdf");
+    const imageRef = ref.child(image.name);
     var metadata = {
-      contentType: "application/pdf",
+      contentType: image.type,
     };
-    imageRef.put(image, metadata);
+    imageRef.put(image, metadata).on(
+      "state_changed",
+      (snap) => {
+        setFileDisplay("none");
+        setLoadingDisplay("flex");
+        console.log(snap);
+      },
+      (err) => {
+        console.log(err);
+      },
+      () => {
+        storage
+          .ref()
+          .child(image.name)
+          .getDownloadURL()
+          .then((fireBaseUrl) => {
+            console.log("url\n", fireBaseUrl);
+            hitAPI(fireBaseUrl);
+            // setImageAsUrl((prevObject) => ({
+            //   ...prevObject,
+            //   imgUrl: fireBaseUrl,
+            // }));
+          });
+      }
+    );
   };
+  const handleImageAsFile = (e) => {
+    const image = e.target.files[0];
+    handleImage(image);
+    setImageAsFile((imageFile) => image);
+  };
+
   return (
     <>
       <Header />
@@ -62,17 +91,14 @@ export const Page1 = ({ setFile }) => {
               <div className="mx-3">Choose Files</div>
             </label>
             <input
-              onChange={(e) => {
-                handleFileChange(e);
-              }}
+              onChange={handleImageAsFile}
               type="file"
+              name="file"
               id="input-file"
               style={{ display: "none" }}
             />
           </div>
-          <div className="bottom-text" onClick={handleImage()}>
-            or drop Files here
-          </div>
+          <div className="bottom-text">or drop Files here</div>
         </div>
         <div style={{ display: loadingDisplay }} className="loading--container">
           <div>
