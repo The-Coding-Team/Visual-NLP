@@ -7,23 +7,22 @@ import Main from "./Page2/Main";
 // const firebase = require("firebase");
 import firebase from "firebase/app";
 
-export const Page1 = () => {
+export const Page1 = ({setFile}) => {
   const history = useHistory();
   const [loadingText, setLoadingText] = useState("Uploading File");
   const [fileDisplay, setFileDisplay] = useState("flex");
   const [loadingDisplay, setLoadingDisplay] = useState("none");
-  const handleFileChange = () => {
-    setFileDisplay("none");
-    setLoadingDisplay("flex");
-    setTimeout(() => {
-      setLoadingText("Analysing File");
-      setTimeout(() => {
-        setLoadingText("Extracting Text from File");
-        setTimeout(() => {
-          history.push("/page-2");
-        }, 2000);
-      }, 2000);
-    }, 2000);
+  const handleFileChange = (e) => {
+    let file = e.target.files[0]
+    console.warn("data file",file)
+    let reader = new FileReader()
+    reader.readAsDataURL(file)
+    // reader.onload=(e)=>{
+    //   console.warn("img data",e.target.result)
+    // }
+    let url = "https://cdn.cnn.com/cnnnext/dam/assets/160122124623-01-national-handwriting-day.jpg"
+    console.log(setFile)
+    setFile(url)
   };
 
   const handleImage = (image) => {
@@ -55,8 +54,8 @@ export const Page1 = () => {
               <div className="mx-3">Choose Files</div>
             </label>
             <input
-              onChange={() => {
-                handleFileChange();
+              onChange={(e) => {
+                handleFileChange(e);
               }}
               type="file"
               id="input-file"
