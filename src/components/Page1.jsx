@@ -1,25 +1,38 @@
 import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import { useHistory } from "react-router";
+import { getTextAPI } from "../api/getText";
 import Header from "./Page2/Header";
 import Main from "./Page2/Main";
 
-export const Page1 = ({setFile}) => {
+export const Page1 = ({ setFile }) => {
   const history = useHistory();
   const [loadingText, setLoadingText] = useState("Uploading File");
   const [fileDisplay, setFileDisplay] = useState("flex");
   const [loadingDisplay, setLoadingDisplay] = useState("none");
-  const handleFileChange = (e) => {
-    let file = e.target.files[0]
-    console.warn("data file",file)
-    let reader = new FileReader()
-    reader.readAsDataURL(file)
-    // reader.onload=(e)=>{
-    //   console.warn("img data",e.target.result)
-    // }
-    let url = "https://cdn.cnn.com/cnnnext/dam/assets/160122124623-01-national-handwriting-day.jpg"
-    console.log(setFile)
-    setFile(url)
+  const hitAPI = async (url) => {
+    setLoadingText("Extracting Text");
+    if (url.length) {
+      const payload = { url };
+      const res = await getTextAPI(payload);
+      if (res?.status) {
+        history.push("/page-2", { text: res.text });
+        console.log(res.text);
+      } else {
+        //error handling
+      }
+    }
+  };
+  const handleFileChange = async (e) => {
+    setFileDisplay("none");
+    setLoadingDisplay("flex");
+    let file = e.target.files[0];
+    let reader = new FileReader();
+    let url =
+      "https://cdn.cnn.com/cnnnext/dam/assets/160122124623-01-national-handwriting-day.jpg";
+
+    setFile(url);
+    hitAPI(url);
   };
   return (
     <>
