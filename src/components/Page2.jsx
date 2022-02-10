@@ -11,14 +11,10 @@ const Page2 = () => {
   const location = useLocation();
   // const [text, setText] = useState(location?.state?.text);
   const [text, setText] = useState("Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia voluptatem nobis in iusto nemo dolorum quibusdam repellat, quo dolore cupiditate nostrum qui minus consectetur neque non. Facere aspernatur molestias, ab nam facilis soluta officiis praesentium, optio ex adipisci placeat mollitia. Corporis modi assumenda numquam culpa vero similique maxime optio! Esse commodi recusandae eos. Similique obcaecati error ea eligendi ex excepturi officia rerum officiis consequuntur aspernatur nulla deleniti id, et adipisci velit dolorum quod esse corporis placeat nam magni modi hic! Saepe, alias magnam pariatur, doloribus aperiam repudiandae natus facere perferendis culpa, qui officiis nemo beatae ipsum harum? Nulla, illum quam.");
-  
-  const copyClipboard = (id) => {
-    var r = document.createRange();
-r.selectNode(document.getElementById(id));
-window.getSelection().removeAllRanges();
-window.getSelection().addRange(r);
-document.execCommand('copy');
-window.getSelection().removeAllRanges();
+  const [copy, setCopy]=useState(false)
+  const copyClipboard = async() => {
+    await navigator.clipboard.writeText(text)
+    setCopy(true)
   }
 
 
@@ -54,9 +50,9 @@ window.getSelection().removeAllRanges();
         {text?.length && <div>{text}</div>}
       </div> */}
       <div style={{margin:"0px 200px",border:"1px solid gray", borderRadius:"8px"}}>
-      {/* <div className="d-flex justify-content-end p-1" onClick={()=>copyClipboard("#w3review")} style={{cursor:"pointer"}} >
-        <ContentCopyIcon/>
-      </div> */}
+      <div className="d-flex justify-content-end p-1" onClick={copyClipboard} style={{cursor:"pointer"}} >
+        <ContentCopyIcon/> {copy==true? "COPIED":"COPY"  }
+      </div>
       <div className="d-flex justify-content-between p-3" >
         <div >
           <h5 style={{ textAlign: "center" }}>IMG</h5>
