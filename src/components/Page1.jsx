@@ -21,10 +21,10 @@ export const Page1 = ({ setFile }) => {
       const res = await getTextAPI(payload);
       console.log(res);
       if (res?.status) {
-        history.push("/page-2", { text: res.text });
+        history.push("/page-2", { text: res.text, image: url });
       } else {
         //error handling
-        console.log(res)
+        console.log(res);
       }
     }
   };
@@ -61,7 +61,6 @@ export const Page1 = ({ setFile }) => {
             hitAPI(fireBaseUrl);
           });
       }
-      
     );
   };
   const handleImageAsFile = (e) => {
@@ -74,7 +73,7 @@ export const Page1 = ({ setFile }) => {
     <>
       <Header />
       <Main />
-      <Container className="page-1--container">
+      <Container className="">
         <div style={{ display: fileDisplay }} className="drop-file--container">
           <div className="icon m-3">
             <i style={{ fontSize: "80px" }} class="far">
@@ -90,6 +89,7 @@ export const Page1 = ({ setFile }) => {
             </label>
             <input
               onChange={handleImageAsFile}
+              accept="image/*"
               type="file"
               name="file"
               id="input-file"

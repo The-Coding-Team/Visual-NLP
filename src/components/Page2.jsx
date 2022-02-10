@@ -5,18 +5,25 @@ import { getTextAPI } from "../api/getText";
 import Box from "./Page2/Box";
 import Header from "./Page2/Header";
 import Main from "./Page2/Main";
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { useHistory } from "react-router-dom";
 
 const Page2 = () => {
   const location = useLocation();
-  // const [text, setText] = useState(location?.state?.text);
-  const [text, setText] = useState("Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia voluptatem nobis in iusto nemo dolorum quibusdam repellat, quo dolore cupiditate nostrum qui minus consectetur neque non. Facere aspernatur molestias, ab nam facilis soluta officiis praesentium, optio ex adipisci placeat mollitia. Corporis modi assumenda numquam culpa vero similique maxime optio! Esse commodi recusandae eos. Similique obcaecati error ea eligendi ex excepturi officia rerum officiis consequuntur aspernatur nulla deleniti id, et adipisci velit dolorum quod esse corporis placeat nam magni modi hic! Saepe, alias magnam pariatur, doloribus aperiam repudiandae natus facere perferendis culpa, qui officiis nemo beatae ipsum harum? Nulla, illum quam.");
-  const [copy, setCopy]=useState(false)
-  const copyClipboard = async() => {
-    await navigator.clipboard.writeText(text)
-    setCopy(true)
-  }
-
+  const history = useHistory();
+  const [text, setText] = useState(location?.state?.text);
+  const [image, setImage] = useState(location?.state?.image);
+  // const [text, setText] = useState("Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia voluptatem nobis in iusto nemo dolorum quibusdam repellat, quo dolore cupiditate nostrum qui minus consectetur neque non. Facere aspernatur molestias, ab nam facilis soluta officiis praesentium, optio ex adipisci placeat mollitia. Corporis modi assumenda numquam culpa vero similique maxime optio! Esse commodi recusandae eos. Similique obcaecati error ea eligendi ex excepturi officia rerum officiis consequuntur aspernatur nulla deleniti id, et adipisci velit dolorum quod esse corporis placeat nam magni modi hic! Saepe, alias magnam pariatur, doloribus aperiam repudiandae natus facere perferendis culpa, qui officiis nemo beatae ipsum harum? Nulla, illum quam.");
+  const [copy, setCopy] = useState(false);
+  useEffect(() => {
+    if (!text) {
+      history.push("/page-1");
+    }
+  }, [text]);
+  const copyClipboard = async () => {
+    await navigator.clipboard.writeText(text);
+    setCopy(true);
+  };
 
   return (
     <div>
@@ -49,22 +56,38 @@ const Page2 = () => {
         </div>
         {text?.length && <div>{text}</div>}
       </div> */}
-      <div style={{margin:"0px 200px",border:"1px solid gray", borderRadius:"8px"}}>
-      <div className="d-flex justify-content-end p-1" onClick={copyClipboard} style={{cursor:"pointer"}} >
-        <ContentCopyIcon/> {copy==true? "COPIED":"COPY"  }
-      </div>
-      <div className="d-flex justify-content-between p-3" >
-        <div >
-          <h5 style={{ textAlign: "center" }}>IMG</h5>
+      <div className="container my-2">
+        <div
+          style={{
+            border: "1px solid gray",
+            borderRadius: "8px",
+          }}
+          className="my-2"
+        >
+          <div className="d-flex justify-content-around p-3">
+            <div>
+              <h5 style={{ textAlign: "center" }}>IMG</h5>
+              <img width={"500px"} src={image} alt="" />
+            </div>
+            <div>
+              <h5 style={{ textAlign: "center" }}>TEXT</h5>
+              <div class="form-group">
+                <textarea class="form-control" rows="12" cols="50">
+                  {text}
+                </textarea>
+              </div>
+            </div>
+          </div>
+          <div className="d-flex justify-content-end mx-4 my-2">
+            <div
+              className="btn btn-primary"
+              onClick={copyClipboard}
+              style={{ cursor: "pointer" }}
+            >
+              <ContentCopyIcon /> {copy == true ? "COPIED" : "COPY"}
+            </div>
+          </div>
         </div>
-        <div st >
-          <h5 >TEXT</h5>
-          <textarea id="w3review" name="w3review" rows="4" cols="50">
-          {text}
-          </textarea>
-        </div>
-       
-      </div>
       </div>
     </div>
   );
