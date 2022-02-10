@@ -24,6 +24,7 @@ export const Page1 = ({ setFile }) => {
         history.push("/page-2", { text: res.text });
       } else {
         //error handling
+        console.log(res)
       }
     }
   };
@@ -58,12 +59,9 @@ export const Page1 = ({ setFile }) => {
           .then((fireBaseUrl) => {
             console.log("url\n", fireBaseUrl);
             hitAPI(fireBaseUrl);
-            // setImageAsUrl((prevObject) => ({
-            //   ...prevObject,
-            //   imgUrl: fireBaseUrl,
-            // }));
           });
       }
+      
     );
   };
   const handleImageAsFile = (e) => {
