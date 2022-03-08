@@ -19,9 +19,8 @@ export const Page1 = ({ setFile }) => {
     if (url.length) {
       const payload = { url };
       const res = await getTextAPI(payload);
-      console.log(res);
       if (res?.status) {
-        history.push("/page-2", { text: res.text, image: url });
+        history.push("/page-2", { text: res.text, image: res.imageUrl });
       } else {
         //error handling
         console.log(res);
@@ -36,7 +35,7 @@ export const Page1 = ({ setFile }) => {
     hitAPI(url);
   };
   const handleImage = async (image) => {
-    const ref = storage.ref();
+    const ref = storage.ref("NLP_Images/input");
     const imageRef = ref.child(image.name);
     var metadata = {
       contentType: image.type,
@@ -53,7 +52,7 @@ export const Page1 = ({ setFile }) => {
       },
       () => {
         storage
-          .ref()
+          .ref("NLP_Images/input")
           .child(image.name)
           .getDownloadURL()
           .then((fireBaseUrl) => {
