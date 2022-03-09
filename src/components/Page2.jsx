@@ -7,12 +7,17 @@ import Header from "./Page2/Header";
 import Main from "./Page2/Main";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useHistory } from "react-router-dom";
+import {getPdfFile} from "../helpers/getPdfFile";
+import getTextFile from "../helpers/getTextFile";
+
 
 const Page2 = () => {
   const location = useLocation();
   const history = useHistory();
   const [text, setText] = useState(location?.state?.text);
   const [image, setImage] = useState(location?.state?.image);
+  
+
   // const [text, setText] = useState("Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia voluptatem nobis in iusto nemo dolorum quibusdam repellat, quo dolore cupiditate nostrum qui minus consectetur neque non. Facere aspernatur molestias, ab nam facilis soluta officiis praesentium, optio ex adipisci placeat mollitia. Corporis modi assumenda numquam culpa vero similique maxime optio! Esse commodi recusandae eos. Similique obcaecati error ea eligendi ex excepturi officia rerum officiis consequuntur aspernatur nulla deleniti id, et adipisci velit dolorum quod esse corporis placeat nam magni modi hic! Saepe, alias magnam pariatur, doloribus aperiam repudiandae natus facere perferendis culpa, qui officiis nemo beatae ipsum harum? Nulla, illum quam.");
   const [copy, setCopy] = useState(false);
   useEffect(() => {
@@ -24,6 +29,9 @@ const Page2 = () => {
     await navigator.clipboard.writeText(text);
     setCopy(true);
   };
+
+  
+
 
   return (
     <div>
@@ -86,7 +94,14 @@ const Page2 = () => {
             >
               <ContentCopyIcon /> {copy == true ? "COPIED" : "COPY"}
             </div>
+            <div className="btn btn-primary" onClick={()=>getTextFile(text)}>
+              .txt
+            </div>
+            <div className="btn btn-primary" onClick={()=>getPdfFile(text)}>
+              pdf
+            </div>
           </div>
+          
         </div>
       </div>
     </div>
