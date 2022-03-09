@@ -20,7 +20,11 @@ export const Page1 = ({ setFile }) => {
       const payload = { url };
       const res = await getTextAPI(payload);
       if (res?.status) {
-        history.push("/page-2", { text: res.text, image: res.imageUrl });
+        history.push("/page-2", {
+          text: res.text,
+          image: res.imageUrl,
+          formattedText: res.formattedText,
+        });
       } else {
         //error handling
         console.log(res);

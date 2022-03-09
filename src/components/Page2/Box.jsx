@@ -11,32 +11,28 @@ const Box = () => {
       >
         <img src={Reference} alt="Error" />
         <div className="text-main--container">
-          <Card className="m-2 ">
+          <Card className="m-2">
             <div>
-              <span className="text-title title-1 bg-danger">Page 1</span>
+              <span className="text-title bg-danger">Page 1</span>
             </div>
             <Card className="block-card m-3">
               <div>
-                <span className="text-title title-2 bg-primary">Block 1</span>
+                <span className="text-title bg-primary">Block 1</span>
               </div>
               <Card className="paragraph-card m-2">
                 <div>
-                  <span className="text-title title-3 bg-success">
-                    Paragraph 1
-                  </span>
+                  <span className="text-title bg-success">Paragraph 1</span>
                 </div>
                 <Card.Body>C a m l i n P a g e</Card.Body>
               </Card>
             </Card>
             <Card className="block-card m-3">
               <div>
-                <span className="text-title title-2 bg-primary">Block 1</span>
+                <span className="text-title bg-primary">Block 1</span>
               </div>
               <Card className="paragraph-card m-2">
                 <div>
-                  <span className="text-title title-3 bg-success">
-                    Paragraph 1
-                  </span>
+                  <span className="text-title bg-success">Paragraph 1</span>
                 </div>
                 <Card.Body>
                   D a t a W a r e h o u s i n g a n d m i n i n g

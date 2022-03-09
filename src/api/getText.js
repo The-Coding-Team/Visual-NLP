@@ -8,6 +8,7 @@ export const getTextAPI = async (payload) => {
     body: JSON.stringify(payload),
   });
   const json = await res.json();
+  console.log(json);
   return json;
   //   const res = await fetch(`${BASE_URL}/api/get-text`);
   //   console.log(res);

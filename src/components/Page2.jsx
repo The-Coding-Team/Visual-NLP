@@ -10,14 +10,14 @@ import { useHistory } from "react-router-dom";
 import {getPdfFile} from "../helpers/getPdfFile";
 import getTextFile from "../helpers/getTextFile";
 
+import { Page } from "./subComponents/Page";
 
 const Page2 = () => {
   const location = useLocation();
   const history = useHistory();
   const [text, setText] = useState(location?.state?.text);
   const [image, setImage] = useState(location?.state?.image);
-  
-
+  const [pageData, setPageData] = useState(location?.state?.formattedText);
   // const [text, setText] = useState("Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia voluptatem nobis in iusto nemo dolorum quibusdam repellat, quo dolore cupiditate nostrum qui minus consectetur neque non. Facere aspernatur molestias, ab nam facilis soluta officiis praesentium, optio ex adipisci placeat mollitia. Corporis modi assumenda numquam culpa vero similique maxime optio! Esse commodi recusandae eos. Similique obcaecati error ea eligendi ex excepturi officia rerum officiis consequuntur aspernatur nulla deleniti id, et adipisci velit dolorum quod esse corporis placeat nam magni modi hic! Saepe, alias magnam pariatur, doloribus aperiam repudiandae natus facere perferendis culpa, qui officiis nemo beatae ipsum harum? Nulla, illum quam.");
   const [copy, setCopy] = useState(false);
   useEffect(() => {
@@ -37,9 +37,20 @@ const Page2 = () => {
     <div>
       <Header />
       <Main />
+      <div className="d-flex justify-content-center">
+        <div
+          className="image-display--container d-flex justify-content-between "
+          style={{ border: "1px solid gray" }}
+        >
+          <img src={image} width="500px" alt="Error" />
+          <Page pageData={pageData} />
+        </div>
+      </div>
+      {/* <Box /> */}
       {/* <div className="d-flex justify-content-center">
         <Box />
-      </div>
+      </div> */}
+      {/* 
       <div className="d-flex justify-content-center mb-5" width="100%">
         <div
           style={{
@@ -63,7 +74,8 @@ const Page2 = () => {
           </button>
         </div>
         {text?.length && <div>{text}</div>}
-      </div> */}
+      </div>{" "}
+      */}
       <div className="container my-2">
         <div
           style={{
