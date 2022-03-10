@@ -1,13 +1,10 @@
-import { borderRadius } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { getTextAPI } from "../api/getText";
-import Box from "./Page2/Box";
 import Header from "./Page2/Header";
 import Main from "./Page2/Main";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useHistory } from "react-router-dom";
-import {getPdfFile} from "../helpers/getPdfFile";
+import { getPdfFile } from "../helpers/getPdfFile";
 import getTextFile from "../helpers/getTextFile";
 
 import { Page } from "./subComponents/Page";
@@ -30,27 +27,20 @@ const Page2 = () => {
     setCopy(true);
   };
 
-  
-
-
   return (
     <div>
       <Header />
       <Main />
       <div className="d-flex justify-content-center">
+        div
         <div
           className="image-display--container d-flex justify-content-between "
-          style={{ border: "1px solid gray" }}
+          // style={{ border: "1px solid gray" }}
         >
           <img src={image} width="500px" alt="Error" />
           <Page pageData={pageData} />
         </div>
       </div>
-      {/* <Box /> */}
-      {/* <div className="d-flex justify-content-center">
-        <Box />
-      </div> */}
-      {/* 
       <div className="d-flex justify-content-center mb-5" width="100%">
         <div
           style={{
@@ -73,9 +63,13 @@ const Page2 = () => {
             <i class="fas fa-file-alt" style={{ fontSize: "40px" }}></i>
           </button>
         </div>
-        {text?.length && <div>{text}</div>}
       </div>{" "}
-      */}
+      {/* <Box /> */}
+      {/* <div className="d-flex justify-content-center">
+        <Box />
+      </div> */}
+      {/*
+       */}
       <div className="container my-2">
         <div
           style={{
@@ -106,14 +100,13 @@ const Page2 = () => {
             >
               <ContentCopyIcon /> {copy == true ? "COPIED" : "COPY"}
             </div>
-            <div className="btn btn-primary" onClick={()=>getTextFile(text)}>
+            <div className="btn btn-primary" onClick={() => getTextFile(text)}>
               .txt
             </div>
-            <div className="btn btn-primary" onClick={()=>getPdfFile(text)}>
+            <div className="btn btn-primary" onClick={() => getPdfFile(text)}>
               pdf
             </div>
           </div>
-          
         </div>
       </div>
     </div>
