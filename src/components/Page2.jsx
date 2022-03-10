@@ -43,44 +43,41 @@ const Page2 = () => {
       <Header />
       <Main />
       <div className="d-flex justify-content-center">
-        div
-        <div
-          className="image-display--container d-flex justify-content-between "
-          // style={{ border: "1px solid gray" }}
-        >
-          <img src={image} width="500px" alt="Error" />
-          <div className="text-main--container">{pageData?.map(drawPages)}</div>
+        <div className="main-block--container d-flex flex-column ">
+          <div
+            className="image-display--container w-100 d-flex justify-content-between"
+            // style={{ border: "1px solid gray" }}
+          >
+            <img src={image} width="500px" alt="Error" />
+            <div className="text-main--container">
+              {pageData?.map(drawPages)}
+            </div>
+          </div>
+          <div className="d-flex justify-content-end mb-5" width="100%">
+            <div
+              style={{
+                display: "flex",
+                fontFamily: " 'Exo 2', sans-serif",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              DOWNLOAD IN
+            </div>
+            <div className="d-flex justify-content-around">
+              <button type="button" className="btn-sm btn-primary mx-3">
+                <i class="far download-icons fa-file-word"></i>
+              </button>
+              <button type="button" className="btn-sm btn-danger mx-3">
+                <i class="far download-icons fa-file-pdf"></i>
+              </button>
+              <button type="button" className="btn-sm btn-success mx-3">
+                <i class="fas download-icons fa-file-alt"></i>
+              </button>
+            </div>
+          </div>{" "}
         </div>
       </div>
-      <div className="d-flex justify-content-center mb-5" width="100%">
-        <div
-          style={{
-            display: "flex",
-            fontFamily: " 'Exo 2', sans-serif",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          DOWNLOAD IN
-        </div>
-        <div className="d-flex justify-content-around">
-          <button type="button" className="btn-lg btn-primary mx-3">
-            <i class="far fa-file-word" style={{ fontSize: "40px" }}></i>
-          </button>
-          <button type="button" className="btn-lg btn-danger mx-3">
-            <i class="far fa-file-pdf" style={{ fontSize: "40px" }}></i>
-          </button>
-          <button type="button" className="btn-lg btn-success mx-3">
-            <i class="fas fa-file-alt" style={{ fontSize: "40px" }}></i>
-          </button>
-        </div>
-      </div>{" "}
-      {/* <Box /> */}
-      {/* <div className="d-flex justify-content-center">
-        <Box />
-      </div> */}
-      {/*
-       */}
       <div className="container my-2">
         <div
           style={{

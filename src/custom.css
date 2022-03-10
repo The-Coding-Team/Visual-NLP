@@ -70,13 +70,17 @@
   width: 60%;
   align-items: center;
   height: 40rem;
-  margin: 2%;
+  margin-top: 0.5%;
+  /* padding: 2%; */
 }
 .text-main--container {
   overflow-y: scroll;
   height: 40rem;
   border: 2px solid rgb(204, 201, 201);
   width: 25rem;
+}
+.main-block--container {
+  border: 2px solid rgb(204, 201, 201);
 }
 .paragraph-card {
   background-color: #edf6f9 !important;
@@ -86,7 +90,9 @@
   color: white;
   padding: 4px 10px;
 }
-
+.download-icons {
+  font-size: 40px;
+}
 ::-webkit-scrollbar {
   width: 4px;
 }
