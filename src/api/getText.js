@@ -1,4 +1,4 @@
-const BASE_URL = "http://192.168.0.106:105/";
+const BASE_URL = "http://192.168.77.82:105/";
 export const getTextAPI = async (payload) => {
   const res = await fetch(`${BASE_URL}/api/get-text`, {
     method: "POST",

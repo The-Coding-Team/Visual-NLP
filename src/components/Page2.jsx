@@ -9,6 +9,7 @@ import getTextFile from "../helpers/getTextFile";
 
 import { Page } from "./subComponents/Page";
 import { Card } from "react-bootstrap";
+import getWordFile from "../helpers/getWordFile";
 
 const Page2 = () => {
   const location = useLocation();
@@ -42,14 +43,16 @@ const Page2 = () => {
     <div>
       <Header />
       <Main />
-      <div className="d-flex justify-content-center">
-        <div className="main-block--container d-flex flex-column ">
+      <div className="d-flex justify-content-center container" >
+        <div className="main-block--container d-flex flex-column"> 
+        <div className="d-flex justify-content-between">
           <div
-            className="image-display--container w-100 d-flex justify-content-between"
+            className="image-display--container w-50 d-flex justify-content-between" 
             // style={{ border: "1px solid gray" }}
-          >
-            <img src={image} width="500px" alt="Error" />
-            <div className="text-main--container">
+            >
+            <img src={image} width="500px" alt="Error" style={{marginTop:"80px"}}/>
+          </div>
+            <div className="text-main--container" >
               {pageData?.map(drawPages)}
             </div>
           </div>
@@ -65,20 +68,20 @@ const Page2 = () => {
               DOWNLOAD IN
             </div>
             <div className="d-flex justify-content-around">
-              <button type="button" className="btn-sm btn-primary mx-3">
+              <button type="button" className="btn-sm btn-primary mx-3"onClick={() => getWordFile(text)}>
                 <i class="far download-icons fa-file-word"></i>
               </button>
-              <button type="button" className="btn-sm btn-danger mx-3">
+              <button type="button" className="btn-sm btn-danger mx-3"onClick={() => getPdfFile(text)}>
                 <i class="far download-icons fa-file-pdf"></i>
               </button>
-              <button type="button" className="btn-sm btn-success mx-3">
+              <button type="button" className="btn-sm btn-success mx-3" onClick={() => getTextFile(text)}>
                 <i class="fas download-icons fa-file-alt"></i>
               </button>
             </div>
           </div>{" "}
         </div>
       </div>
-      <div className="container my-2">
+      {/* <div className="container my-2">
         <div
           style={{
             border: "1px solid gray",
@@ -116,7 +119,7 @@ const Page2 = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
