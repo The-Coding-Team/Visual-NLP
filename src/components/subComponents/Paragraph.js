@@ -13,7 +13,7 @@ export const Paragraph = ({ paragraphData }) => {
       //   </div>
       //   <Card.Body>{paragraph}</Card.Body>
       // </Card>
-      { paragraph }
+      paragraph
     );
   };
   return (
