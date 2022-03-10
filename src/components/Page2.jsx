@@ -8,6 +8,7 @@ import { getPdfFile } from "../helpers/getPdfFile";
 import getTextFile from "../helpers/getTextFile";
 
 import { Page } from "./subComponents/Page";
+import { Card } from "react-bootstrap";
 
 const Page2 = () => {
   const location = useLocation();
@@ -21,12 +22,22 @@ const Page2 = () => {
     if (!text) {
       history.push("/page-1");
     }
+    console.log(pageData);
   }, [text]);
   const copyClipboard = async () => {
     await navigator.clipboard.writeText(text);
     setCopy(true);
   };
-
+  const drawPages = (blockData, index) => {
+    return (
+      <Card className="m-2">
+        <div>
+          <span className="text-title bg-danger">Page {index + 1}</span>
+        </div>
+        <Page key={index} blockData={blockData} />
+      </Card>
+    );
+  };
   return (
     <div>
       <Header />
@@ -38,7 +49,7 @@ const Page2 = () => {
           // style={{ border: "1px solid gray" }}
         >
           <img src={image} width="500px" alt="Error" />
-          <Page pageData={pageData} />
+          <div className="text-main--container">{pageData?.map(drawPages)}</div>
         </div>
       </div>
       <div className="d-flex justify-content-center mb-5" width="100%">

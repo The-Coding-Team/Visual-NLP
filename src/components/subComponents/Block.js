@@ -2,16 +2,16 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import { Paragraph } from "./Paragraph";
 
-export const Block = ({ blockData }) => {
-  const drawParagraphs = (paragraphData, index) => {
+export const Block = ({ paragraphData }) => {
+  const drawParagraphs = (wordData, index) => {
     return (
       <Card className="block-card m-3">
         <div>
-          <span className="text-title bg-primary">Block {index + 1}</span>
+          <span className="text-title bg-success">Paragraph {index + 1}</span>
         </div>
-        <Paragraph key={index} paragraphData={paragraphData} />
+        <Paragraph key={index} wordData={wordData} />
       </Card>
     );
   };
-  return <>{blockData?.map(drawParagraphs)}</>;
+  return <>{paragraphData?.map(drawParagraphs)}</>;
 };
