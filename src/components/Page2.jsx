@@ -43,14 +43,22 @@ const Page2 = () => {
       <Header />
       <Main />
       <div className="d-flex justify-content-center">
-        <div className="main-block--container d-flex flex-column ">
+        <div className="main-block--container d-flex flex-column justify-content-between">
           <div
-            className="image-display--container w-100 d-flex justify-content-between"
+            className="image-display--container w-100 d-flex justify-content-between align-items-start"
             // style={{ border: "1px solid gray" }}
           >
-            <img src={image} width="500px" alt="Error" />
-            <div className="text-main--container">
-              {pageData?.map(drawPages)}
+            <div className="d-flex flex-column">
+              <h5 className="d-flex justify-content-center">IMAGE</h5>
+              <div>
+                <img src={image} width="500px" alt="Error" />
+              </div>
+            </div>
+            <div className="d-flex flex-column">
+              <h5 className="d-flex justify-content-center">TEXT</h5>
+              <div className="text-main--container">
+                {pageData?.map(drawPages)}
+              </div>
             </div>
           </div>
           <div className="d-flex justify-content-end my-3" width="100%">
