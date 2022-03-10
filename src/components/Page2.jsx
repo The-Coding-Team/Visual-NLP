@@ -43,15 +43,15 @@ const Page2 = () => {
     <div>
       <Header />
       <Main />
-      <div className="d-flex justify-content-center">
-        <div className="main-block--container d-flex flex-column justify-content-between">
+      <div className="d-flex justify-content-center my-3">
+        <div className="main-block--container d-flex flex-column justify-content-between p-4">
           <div
             className="image-display--container w-100 d-flex justify-content-between align-items-start"
             // style={{ border: "1px solid gray" }}
-          >
-            <div className="d-flex flex-column">
+           >
+            <div className="image-block--container d-flex justify-content-between flex-column">
               <h5 className="d-flex justify-content-center">IMAGE</h5>
-              <div>
+              <div className="image-main--container">
                 <img src={image} width="500px" alt="Error" />
               </div>
             </div>

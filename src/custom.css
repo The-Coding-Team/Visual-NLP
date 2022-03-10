@@ -67,20 +67,29 @@
   }
 }
 .image-display--container {
-  width: 100%;
+  width: 60%;
   align-items: center;
-  margin-top: 0.5%;
+  margin-top: 2%;
   /* padding: 2%; */
 }
 .text-main--container {
   overflow-y: scroll;
   height: 40rem;
   border: 2px solid rgb(204, 201, 201);
-  /* width: 25rem; */
+  width: 25rem;
+}
+.image-main--container{
+  height:40rem;
+
 }
 .main-block--container {
   border: 2px solid rgb(204, 201, 201);
+  border-radius: 20px;
+  width: 65%;
   
+}
+.image-block--container{
+  margin-right:2%;
 }
 .paragraph-card {
   background-color: #edf6f9 !important;
@@ -95,6 +104,7 @@
 }
 ::-webkit-scrollbar {
   width: 4px;
+  margin-bottom: 5px;
 }
 
 /* Track */
