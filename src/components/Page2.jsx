@@ -53,7 +53,7 @@ const Page2 = () => {
               {pageData?.map(drawPages)}
             </div>
           </div>
-          <div className="d-flex justify-content-end mb-5" width="100%">
+          <div className="d-flex justify-content-end my-3" width="100%">
             <div
               style={{
                 display: "flex",
